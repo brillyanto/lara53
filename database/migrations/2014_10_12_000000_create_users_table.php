@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('username',32);
             $table->date('dob');
-            $table->string('email', 32)->unique();
-            $table->string('password', 32);
+            $table->string('email')->unique();
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
