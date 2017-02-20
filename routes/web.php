@@ -21,4 +21,4 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/profile/{username}', 'ProfileController@profile');
 
-Route::resource('/article', 'ArticlesController');
+Route::resource('/articles', 'ArticlesController');
