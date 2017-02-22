@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use Auth;
+use DB;
 
 class ArticlesController extends Controller
 {
@@ -15,7 +16,13 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        return 'Article Index page';
+        // $article = Article::all();
+        //$article = Article::whereLive('0')->first();
+        //$articles = DB::table('articles')->whereLive('1')->get();
+
+        $articles = DB::table('articles')->whereLive('0')->get();
+
+        return $articles;
     }
 
     /**
@@ -47,7 +54,9 @@ class ArticlesController extends Controller
 
         $article->save(); */
 
-        Article::create(array_merge($request->all(), ['user_id' => Auth::user()->id] ));
+//        Article::create(array_merge($request->all(), ['user_id' => Auth::user()->id] ));
+
+        DB::table('articles')->insert(array_merge($request->all(), ['user_id' => Auth::user()->id] ));
 
       //  Article::create($request->all());
 
